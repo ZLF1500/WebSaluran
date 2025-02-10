@@ -1,0 +1,42 @@
+/* forms.css */
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #555;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form textarea:focus,
+form input[type="password"]:focus {
+    border-color: #4CAF50;
+}
+
+form input[type="file"] {
+    margin-bottom: 1em;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Akun</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <header>
+        <h1>Pengaturan Akun</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="chat.html">Chat Kelas</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">&#9776;</a>
+                    <div class="dropdown-content">
+                        <a href="approval.html">Persetujuan</a>
+                        <a href="account_settings.html">Pengaturan Akun</a>
+                        <a href="#" id="addAdminLink">Tambah Admin</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="accountSettings">
+            <h2>Ubah Username</h2>
+            <form id="usernameForm">
+                <label for="newUsername">Username Baru:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+                <button type="submit">Ubah Username</button>
+            </form>
+        </section>
+    </main>
+    <script src="js/auth.js"></script>
+</body>
+</html>

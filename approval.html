@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persetujuan Tugas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <header>
+        <h1>Persetujuan Tugas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="chat.html">Chat Kelas</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">&#9776;</a>
+                    <div class="dropdown-content">
+                        <a href="approval.html">Persetujuan</a>
+                        <a href="account_settings.html">Pengaturan Akun</a>
+                        <a href="#" id="addAdminLink">Tambah Admin</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="approval">
+            <h2>Daftar Tugas untuk Disetujui</h2>
+            <ul id="approvalList">
+                <!-- Tugas akan ditambahkan di sini -->
+            </ul>
+        </section>
+        <section id="adminActions" style="display:none;">
+            <h2>Admin Actions</h2>
+            <button id="approveAllTasksButton">Setujui Semua Tugas</button>
+            <button id="rejectAllTasksButton">Tolak Semua Tugas</button>
+        </section>
+    </main>
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            alert('Anda harus login terlebih dahulu.');
+            window.location.href = 'login.html';
+        } else {
+            console.log(`Selamat datang, ${currentUser.username}`);
+            if (currentUser.role === 'admin' || currentUser.role === 'owner') {
+                document.getElementById('adminActions').style.display = 'block';
+            }
+            if (currentUser.role !== 'owner') {
+                document.getElementById('addAdminLink').style.display = 'none';
+            }
+        }
+
+        document.getElementById('addAdminLink').addEventListener('click', function() {
+            const username = prompt('Masukkan username pengguna yang akan ditambahkan sebagai admin:');
+            if (username) {
+                addAdmin(username);
+            }
+        });
+
+        document.getElementById('approveAllTasksButton').addEventListener('click', function() {
+            if (confirm('Apakah Anda yakin ingin menyetujui semua tugas?')) {
+                approveAllTasks();
+            }
+        });
+
+        document.getElementById('rejectAllTasksButton').addEventListener('click', function() {
+            if (confirm('Apakah Anda yakin ingin menolak semua tugas?')) {
+                rejectAllTasks();
+            }
+        });
+    </script>
+    <script src="js/auth.js"></script>
+    <script src="js/approval.js"></script>
+</body>
+</html>
